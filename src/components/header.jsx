@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Header extends Component {
     //state = {  }
     render() { 
-        return <div>Tour of Heros</div>;
+        return <div className="h3 m-2">Tour of Heros</div>;
     }
 }
  
