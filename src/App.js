@@ -1,7 +1,7 @@
 /** IMPORTING CORE REACT MODULES */
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+//import { browserHistory } from 'react-router';
 /** IMPORTING BOOTSTRAP MODULE */
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -15,7 +15,7 @@ import Navigation from  './components/navigation';
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <Header />
         <Router>
           <React.Fragment>
@@ -27,10 +27,9 @@ class App extends Component {
             <Route path="/details/:id" exact strict render={({ match }) => {
                 return <Details id={match.params.id}/>
             }} />
-
-            </React.Fragment>
-          </Router>
-      </React.Fragment>
+          </React.Fragment>
+        </Router>
+      </div>
     );
   }
 }

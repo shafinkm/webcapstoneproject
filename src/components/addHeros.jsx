@@ -7,8 +7,8 @@ class AddHero extends Component {
         return (
             <div>
                 <label className="m-2">Hero Name:</label>
-                <input className="m-2" type="text" value=""/>
-                <button className="btn btn-secondary m-3">add</button>
+                <input id="hero_input" className="m-2" type="text" value={this.props.newHeroValue} onChange={this.props.handleChange}/>
+                <button className="btn btn-secondary m-3" onClick={this.props.handleAddNewUser.bind(this)}>add</button>
             </div>
         );
     }
@@ -16,18 +16,33 @@ class AddHero extends Component {
  
 const mapStateToProps = state => {
     return {
-        state: state.heroList
+        state: {
+            ...state
+        }
     };
 };
 
 const mapFunctionToProps = dispatch => {
     return {
-        handleAddNewUser : () => {
-           //get the value from the input field 
+        handleAddNewUser : (e) => {
+            //clear the input field
+            document.querySelector("#hero_input").value = "";
 
-           //dispatch and action with the new name
+            //dispatch the action to add a new hero
+            dispatch({ 
+                type: 'ADD_HERO'
+            });
+        },
+        handleChange: e => {
+            const newHeroValue = e.target.value;
+            dispatch({ 
+                type: 'ADD_NEW_HERO_VALUE', 
+                payload: {
+                    newHeroValue
+                }
+            });   
         }
     }
 }
 
-export default connect(mapStateToProps)(AddHero);
+export default connect(mapStateToProps, mapFunctionToProps)(AddHero);

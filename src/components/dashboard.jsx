@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 class Dashboard extends Component {
     render() { 
         return (
             <React.Fragment>
                 <h1 className="h4">Top Heros</h1>
-                { this.props.herosList.slice(1, 5).map(hero => {
-                    return <a key={hero.id} href={`/details/${hero.id}`} className="badge badge-secondary m-3 p-5">{hero.name}</a>
+                { this.props.herosList.slice(0, 5).map(hero => {
+                    return <NavLink key={hero.id} to={`/details/${hero.id}`} className="badge badge-secondary m-3 p-5">{hero.name}</NavLink>
                 })}
             </React.Fragment>
         );
@@ -15,9 +16,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        herosList: state.herosList
-    };
+    return state;
 };
 
 

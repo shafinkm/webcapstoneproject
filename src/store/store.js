@@ -18,7 +18,9 @@ const initialState = {
         { id: 19, name: 'Magma' },
         { id: 20, name: 'Tornado' }
   ],
-  filteredHeroList: []
+  filteredHeroList: [],
+  updatedHeroName: { id: "", name: "" },
+  newHeroValue: ""
 };
 
 /** CREATING STORE */
@@ -29,3 +31,4 @@ const store = createStore(
 );
 
 export default store;
+
