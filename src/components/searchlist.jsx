@@ -8,9 +8,8 @@ class SearchList extends Component {
             <ul className="list-group">
                 {this.props.filteredHeroList.map(hero => {
                     return (
-                        <li key={hero.id} className="list-group-item" style={{ width:"172px" }}>
-                            <NavLink to={`/details/${hero.id}`}>{hero.name}</NavLink>
-                        </li>
+                        <NavLink to={`/details/${hero.id}`} key={hero.id} className="list-group-item" style={{ width:"172px" }}>{hero.name}</NavLink>
+                        
                     );
                 })}
             </ul>

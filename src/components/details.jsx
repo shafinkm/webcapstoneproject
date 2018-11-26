@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
+
 class Details extends Component {
 
     componentDidMount(){
@@ -15,27 +18,26 @@ class Details extends Component {
                 <label className="m-2">name:</label><br/>
                 <input id="update_hero" type="text" value={this.props.updatedHeroName.name} onChange={(event) => { this.props.handleChange(event, this.props.id) }}/><br/>
                 
-                <button className="btn btn-secondary m-2">go back</button>
-                <button className="btn btn-secondary m-2" onClick={this.props.handleUpdateHero.bind(this)}>save</button>
+                <button className="btn btn-secondary m-2" onClick={ this.props.handleGoBack }>go back</button>
+                <button className="btn btn-secondary m-2" onClick={ this.props.handleUpdateHero }>save</button>
             </div>
         );
     }
 }
- 
-
 
 const mapFunctionToProps = dispatch => {
     return {
-        handleUpdateHero : (e) => {
+        handleUpdateHero : e => {
             const updateValue = document.getElementById("update_hero").value;
-
-            //clear the input field
-            document.getElementById("update_hero").value = "";
 
             if(updateValue !== ""){
                 dispatch({
                     type: "UPDATE_HERO_LIST"
                 });
+                dispatch({
+                    type: "RESET_UPDATE_VALUE"
+                });
+                history.goBack();
             } 
         },
         handleChange: (e, id) => {
@@ -49,6 +51,9 @@ const mapFunctionToProps = dispatch => {
                 type: "LOAD_HERO_NAME",
                 payload: parseInt(id)
             });
+        },
+        handleGoBack: _ => {
+            history.goBack();
         }
     }
 }

@@ -50,6 +50,12 @@ const rootReducer = (state, action) => {
                 herosList: newList
             };
             break;
+        case "RESET_UPDATE_VALUE":
+            state = {
+                ...state,
+                updatedHeroName: {id:"", name:""}
+            };
+            break;
         case "SET_HERO_NAME":
             state = {
                 ...state,
