@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import SearchList from './searchlist';
+
 class Dashboard extends Component {
     render() { 
         return (
@@ -10,6 +12,12 @@ class Dashboard extends Component {
                 { this.props.herosList.slice(0, 5).map(hero => {
                     return <NavLink key={hero.id} to={`/details/${hero.id}`} className="badge badge-secondary m-3 p-5">{hero.name}</NavLink>
                 })}
+                <br /><label>Hero Search</label><br />
+                
+                <input type="text" value={this.props.searchQuery} onChange={this.props.handleChange}/>
+                {
+                    (this.props.searchQuery)? <SearchList /> : <div></div>
+                }
             </React.Fragment>
         );
     }
@@ -19,6 +27,16 @@ const mapStateToProps = state => {
     return state;
 };
 
-
+const mapFunctionToProps = dispatch => {
+    return {
+        handleChange: e => {
+            const searchQuery = e.target.value;
+            dispatch({ 
+                type: 'FILTER_HERO_LIST', 
+                payload: searchQuery
+            });   
+        }
+    }
+}
  
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, mapFunctionToProps)(Dashboard);

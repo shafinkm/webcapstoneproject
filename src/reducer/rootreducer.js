@@ -68,6 +68,16 @@ const rootReducer = (state, action) => {
                 updatedHeroName: newObj
             }
             break;
+        case "FILTER_HERO_LIST":
+            if(state.herosList.length > 0){
+                const filteredHero = performSearch(state.herosList, action.payload);
+                state = {
+                    ...state,
+                    searchQuery: action.payload,
+                    filteredHeroList: filteredHero
+                }
+            }
+            break;
         default:
             state = {
                 ...state
@@ -75,4 +85,12 @@ const rootReducer = (state, action) => {
     }
     return state;
 }
+
+// SEARCH FUNCTION
+const performSearch = (arrHeroList, queryString) => {
+
+    return arrHeroList.filter(objHero => objHero.name.toLowerCase().indexOf(queryString.toLowerCase()) !== -1);
+   
+}
+
 export default rootReducer;

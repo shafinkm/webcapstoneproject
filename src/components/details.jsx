@@ -8,12 +8,6 @@ class Details extends Component {
     }
 
     render() {
-        //console.log(this.props);
-        // if(this.props.updatedHeroName.name === ""){
-        //     //console.log(this.props);
-        //     this.props.test(this.props.id); 
-        // }
-       
         return (
             <div>
                 <h2>{this.props.updatedHeroName.name} Details</h2>

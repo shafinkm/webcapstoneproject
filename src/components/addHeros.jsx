@@ -15,11 +15,7 @@ class AddHero extends Component {
 }
  
 const mapStateToProps = state => {
-    return {
-        state: {
-            ...state
-        }
-    };
+    return state;
 };
 
 const mapFunctionToProps = dispatch => {

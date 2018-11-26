@@ -24,6 +24,7 @@ class App extends Component {
             <Route path="/" exact strict component={Dashboard} />
             <Route path="/dashboard" exact strict component={Dashboard} />
             <Route path="/heroes" exact strict component={Heroes} />
+
             <Route path="/details/:id" exact strict render={({ match }) => {
                 return <Details id={match.params.id}/>
             }} />

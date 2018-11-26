@@ -18,9 +18,13 @@ const initialState = {
         { id: 19, name: 'Magma' },
         { id: 20, name: 'Tornado' }
   ],
-  filteredHeroList: [],
   updatedHeroName: { id: "", name: "" },
-  newHeroValue: ""
+  newHeroValue: "",
+  filteredHeroList: [
+    { id: 11, name: 'Mr. Nice' },
+    { id: 12, name: 'Narco' }
+  ],
+  searchQuery: ""
 };
 
 /** CREATING STORE */
