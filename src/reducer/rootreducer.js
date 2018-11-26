@@ -84,6 +84,13 @@ const rootReducer = (state, action) => {
                 }
             }
             break;
+        case "CLEAR_SEARCH_QUERY":
+            state = {
+                ...state,
+                searchQuery: "",
+                filteredHeroList: []
+            }
+        break;
         default:
             state = {
                 ...state

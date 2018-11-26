@@ -5,6 +5,10 @@ import { NavLink } from 'react-router-dom';
 import SearchList from './searchlist';
 
 class Dashboard extends Component {
+    componentDidMount(){
+        this.props.handleClearSearchQuery();
+    }
+
     render() { 
         return (
             <React.Fragment>
@@ -35,6 +39,11 @@ const mapFunctionToProps = dispatch => {
                 type: 'FILTER_HERO_LIST', 
                 payload: searchQuery
             });   
+        },
+        handleClearSearchQuery: _ => {
+            dispatch({
+               type: 'CLEAR_SEARCH_QUERY' 
+            });
         }
     }
 }
