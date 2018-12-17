@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createBrowserHistory } from "history";
 const history = createBrowserHistory();
 
-class Details extends Component {
+export class Details extends Component {
 
     componentDidMount(){
         this.props.handleLoadHeroName(this.props.id); 
@@ -18,17 +18,19 @@ class Details extends Component {
                 <label className="m-2">name:</label><br/>
                 <input id="update_hero" type="text" value={this.props.updatedHeroName.name} onChange={(event) => { this.props.handleChange(event, this.props.id) }}/><br/>
                 
-                <button className="btn btn-secondary m-2" onClick={ this.props.handleGoBack }>go back</button>
-                <button className="btn btn-secondary m-2" onClick={ this.props.handleUpdateHero }>save</button>
+                <button id="back-button" className="btn btn-secondary m-2" onClick={ this.props.handleGoBack }>go back</button>
+                <button id="save-hero" className="btn btn-secondary m-2" onClick={ this.props.handleUpdateHero }>save</button>
             </div>
         );
     }
 }
 
-const mapFunctionToProps = dispatch => {
+export const mapFunctionToProps = dispatch => {
     return {
         handleUpdateHero : e => {
-            const updateValue = document.getElementById("update_hero").value;
+            //const updateValue = document.getElementById("update_hero").value;
+            const updateValue = e.target.value;
+
 
             if(updateValue !== ""){
                 dispatch({
@@ -58,7 +60,7 @@ const mapFunctionToProps = dispatch => {
     }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return state;
 };
 

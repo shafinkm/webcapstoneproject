@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 /** IMPORTING USER COMPONENTS */
 import AddHero from './addHeros';
 
-class Heroes extends Component {
+export class Heroes extends Component {
     render() { 
         return (
             <React.Fragment>
@@ -29,7 +29,7 @@ class Heroes extends Component {
     }
 }
 
-const mapFunctionToProps = dispatch => {
+export const mapFunctionToProps = dispatch => {
     return {
         handleRemoveHero: (e) => {
             const heroID = e.target.getAttribute('value');
@@ -43,7 +43,7 @@ const mapFunctionToProps = dispatch => {
     }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return state;
 };
  

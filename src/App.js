@@ -1,9 +1,9 @@
 /** IMPORTING CORE REACT MODULES */
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-//import { browserHistory } from 'react-router';
+
 /** IMPORTING BOOTSTRAP MODULE */
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 
 //** IMPORTING ALL USER COMPONENTS HERE */
 import Header from './components/header';

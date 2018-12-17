@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-class SearchList extends Component {
+export class SearchList extends Component {
     render() { 
         return (
             <ul className="list-group">
@@ -17,7 +17,7 @@ class SearchList extends Component {
     }
 }
  
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return state;
 };
 

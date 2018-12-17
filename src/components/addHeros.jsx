@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class AddHero extends Component {
+export class AddHero extends Component {
 
     render() { 
         return (
             <div>
                 <label className="m-2">Hero Name:</label>
                 <input id="hero_input" className="m-2" type="text" value={this.props.newHeroValue} onChange={this.props.handleChange}/>
-                <button className="btn btn-secondary m-3" onClick={this.props.handleAddNewUser.bind(this)}>add</button>
+                <button id="add-hero" className="btn btn-secondary m-3" onClick={this.props.handleAddNewUser.bind(this)}>add</button>
             </div>
         );
     }
 }
  
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return state;
 };
 
-const mapFunctionToProps = dispatch => {
+export const mapFunctionToProps = dispatch => {
     return {
         handleAddNewUser : (e) => {
             //clear the input field

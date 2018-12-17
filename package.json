@@ -14,10 +14,33 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/setup/polyfills.js",
+      "<rootDir>/__tests__/setup/setupEnzyme.js",
+      "react-app-polyfill/jsdom"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/serviceWorker.js"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -28,5 +51,20 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.6.0",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.2.2"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
 }

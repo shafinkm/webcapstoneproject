@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import SearchList from './searchlist';
 
-class Dashboard extends Component {
+export class Dashboard extends Component {
     componentDidMount(){
         this.props.handleClearSearchQuery();
     }
@@ -18,7 +18,7 @@ class Dashboard extends Component {
                 })}
                 <br /><label>Hero Search</label><br />
                 
-                <input type="text" value={this.props.searchQuery} onChange={this.props.handleChange}/>
+                <input id="search_query" type="text" value={this.props.searchQuery} onChange={this.props.handleChange}/>
                 {
                     (this.props.searchQuery)? <SearchList /> : <div></div>
                 }
@@ -27,11 +27,11 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return state;
 };
 
-const mapFunctionToProps = dispatch => {
+export const mapFunctionToProps = dispatch => {
     return {
         handleChange: e => {
             const searchQuery = e.target.value;
